@@ -1,0 +1,15 @@
+{
+    "name": "Mr.Jimaku",
+    "version": "0.1",
+    "description": "show your caption on the YouTube",
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/*"],
+            "run_at": "document_end",
+            "js": ["contentScript.js"]
+        }
+    ],
+    "permissions": [
+    ],
+    "manifest_version": 2
+}
