@@ -13,7 +13,6 @@ function srtParseAddCue(textTrack, text) {
   for (var i = 0, len = lines.length; i < len; i++) {
     var strArr = lines[i].match(re);
     if (strArr) {
-      // TODO: 配列のスライスを指定して関数化
       var startTime = calcSecond(strArr.slice(1, 5))
       var endTime = calcSecond(strArr.slice(5, 9))
       // TODO: startとendで時間が矛盾してないか
@@ -24,16 +23,34 @@ function srtParseAddCue(textTrack, text) {
 
 function onSelectFile() {
   var videos = document.getElementsByTagName("video");
-  // TODO: 字幕をメニューに表示
-  // TODO: 字幕の言語を任意で選択
   // TODO: 0以外の指定もできるようにする。
-  var textTrack = videos[0].addTextTrack("captions", "日本語の字幕", "ja");
+  var textTrack = videos[0].addTextTrack("captions", "Mr.Jimaku");
   // TODO: 0以外の指定もできるようにする。
   var jimakufile = document.getElementById("jimakufile");
   var reader = new FileReader();
   reader.onload = function () {
     srtParseAddCue(textTrack, reader.result);
     videos[0].textTracks[0].mode = "showing";
+    // 字幕切り替えボタンの設置
+    var divMrJimakuArea = document.getElementById("MrJimakuArea");
+    var divToggleSwitchArea = [
+      '<div class="myToggleSwitchArea">',
+      '<span class="mySimpleGray">your caption</span>',
+      '<input id="myToggleButton" type="checkbox" />',
+      '<label for="myToggleButton" id="myToggleBar"/>',
+      '</div>',
+    ].join('');
+    divMrJimakuArea.insertAdjacentHTML("beforeend", divToggleSwitchArea);
+    var toggleSwitch = document.getElementById("myToggleButton");
+    toggleSwitch.addEventListener("change", (event) => {
+      // アローなので、継承してくれる
+      var value = event.target.checked;
+      if (value) {
+        videos[0].textTracks[0].mode = "showing";
+      } else {
+        videos[0].textTracks[0].mode = "disabled";
+      }
+    })
   }
   reader.readAsText(jimakufile.files[0]);
 }
@@ -44,7 +61,17 @@ function main() {
     var divmeta = document.getElementById("meta");
     if (divmeta) {
       clearInterval(jsInitCheckTimer);
-      divmeta.insertAdjacentHTML("afterBegin", '<input type="file" id="jimakufile">');
+      // TODO: fakepathと表示されるのでファイル名のみ抽出
+      var mrArea = [
+        '<div id="MrJimakuArea">',
+        '<div class="mySimpleGray myUploadButton">select a caption file',
+        '<input type="file" id="jimakufile" ',
+        'onchange="uv.value = this.value;" />',
+        '<input type="text" id="uv" class="myUploadValue" disabled />',
+        '</div>',
+        '</div>'
+      ].join('');
+      divmeta.insertAdjacentHTML("beforebegin", mrArea);
       var elements = document.getElementById("jimakufile");
       elements.addEventListener("change", onSelectFile, false);
     }
