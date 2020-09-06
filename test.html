@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="MrJimakuArea">
+    <div class="mySimpleGray myUploadButton">select a caption file
+      <input type="file" id="jimakufile" onchange="uv.value = this.files[0].name;" checked />
+      <input type="text" id="uv" class="myUploadValue" disabled />
+    </div>
+    <div class="myToggleSwitchArea">
+      <span class="mySimpleGray">your caption</span>
+      <input id="myToggleButton" type="checkbox" />
+      <label for="myToggleButton" id="myToggleBar" />
+    </div>
+  </div>
+</body>
+
+</html>

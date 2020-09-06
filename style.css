@@ -1,10 +1,10 @@
 #MrJimakuArea {
   display: inline-flex;
   align-items: baseline;
+  border-bottom: solid #606060;
 }
 .myToggleSwitchArea {
   margin-left: 20px;
-  display: inline-block;
   padding: 5px;
 }
 /* ファイル選択--------------------------------------------------- */
@@ -22,7 +22,6 @@
   text-align: center;
   padding: 5px;
   cursor: pointer;
-  /* border-bottom: solid #606060; */
 }
 .myUploadButton input[type=file] {
   position: absolute;
@@ -46,6 +45,7 @@
   margin-left: 10px;
   width: 36px;
   height: 14px;
+  top: 2px;
   background: #E6E6E6;
   position: relative;
   border-radius: 8px;

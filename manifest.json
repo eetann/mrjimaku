@@ -1,6 +1,6 @@
 {
     "name": "Mr.Jimaku",
-    "version": "0.2",
+    "version": "0.3",
     "description": "show your caption on the YouTube",
     "content_scripts": [
         {

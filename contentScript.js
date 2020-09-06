@@ -25,7 +25,6 @@ function onSelectFile() {
   var videos = document.getElementsByTagName("video");
   // TODO: 0以外の指定もできるようにする。
   var textTrack = videos[0].addTextTrack("captions", "Mr.Jimaku");
-  // TODO: 0以外の指定もできるようにする。
   var jimakufile = document.getElementById("jimakufile");
   var reader = new FileReader();
   reader.onload = function () {
@@ -36,7 +35,7 @@ function onSelectFile() {
     var divToggleSwitchArea = [
       '<div class="myToggleSwitchArea">',
       '<span class="mySimpleGray">your caption</span>',
-      '<input id="myToggleButton" type="checkbox" />',
+      '<input id="myToggleButton" type="checkbox" checked/>',
       '<label for="myToggleButton" id="myToggleBar"/>',
       '</div>',
     ].join('');
@@ -61,12 +60,11 @@ function main() {
     var divmeta = document.getElementById("meta");
     if (divmeta) {
       clearInterval(jsInitCheckTimer);
-      // TODO: fakepathと表示されるのでファイル名のみ抽出
       var mrArea = [
         '<div id="MrJimakuArea">',
         '<div class="mySimpleGray myUploadButton">select a caption file',
         '<input type="file" id="jimakufile" ',
-        'onchange="uv.value = this.value;" />',
+        'onchange="uv.value = this.files[0].name;" />',
         '<input type="text" id="uv" class="myUploadValue" disabled />',
         '</div>',
         '</div>'
