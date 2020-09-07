@@ -15,46 +15,35 @@ function srtParseAddCue(textTrack, text) {
     if (strArr) {
       var startTime = calcSecond(strArr.slice(1, 5))
       var endTime = calcSecond(strArr.slice(5, 9))
-      // TODO: startとendで時間が矛盾してないか
       textTrack.addCue(new VTTCue(startTime, endTime, lines[i + 1]));
     }
   }
+  textTrack.mode = "showing";
 }
 
 function onSelectFile() {
-  var videos = document.getElementsByTagName("video");
-  // TODO: 0以外の指定もできるようにする。
-  var textTrack = videos[0].addTextTrack("captions", "Mr.Jimaku");
+  var video = document.getElementsByTagName("video")[0];
+  // 他の字幕をオフにする
+  var toggleSwitch = document.getElementById("myToggleButton");
+  toggleSwitch.setAttribute("disabled", true);
+  toggleSwitch.checked = false;
+  if (video.textTracks.length > 0) {
+    video.textTracks[video.textTracks.length - 1].mode = "disabled";
+  }
+  // 字幕を追加する
+  var textTrack = video.addTextTrack("captions", "Mr.Jimaku");
   var jimakufile = document.getElementById("jimakufile");
   var reader = new FileReader();
-  reader.onload = function () {
+  reader.onload = () => {
     srtParseAddCue(textTrack, reader.result);
-    videos[0].textTracks[0].mode = "showing";
-    // 字幕切り替えボタンの設置
-    var divMrJimakuArea = document.getElementById("MrJimakuArea");
-    var divToggleSwitchArea = [
-      '<div class="myToggleSwitchArea">',
-      '<span class="mySimpleGray">your caption</span>',
-      '<input id="myToggleButton" type="checkbox" checked/>',
-      '<label for="myToggleButton" id="myToggleBar"/>',
-      '</div>',
-    ].join('');
-    divMrJimakuArea.insertAdjacentHTML("beforeend", divToggleSwitchArea);
-    var toggleSwitch = document.getElementById("myToggleButton");
-    toggleSwitch.addEventListener("change", (event) => {
-      // アローなので、継承してくれる
-      var value = event.target.checked;
-      if (value) {
-        videos[0].textTracks[0].mode = "showing";
-      } else {
-        videos[0].textTracks[0].mode = "disabled";
-      }
-    })
+    toggleSwitch.removeAttribute("disabled");
+    toggleSwitch.checked = true;
   }
   reader.readAsText(jimakufile.files[0]);
 }
 
 function main() {
+  // 表示されるまで要素が取得できないので待つ
   const jsInitCheckTimer = setInterval(isMetaLoaded, 1000);
   function isMetaLoaded() {
     var divmeta = document.getElementById("meta");
@@ -67,9 +56,24 @@ function main() {
         'onchange="uv.value = this.files[0].name;" />',
         '<input type="text" id="uv" class="myUploadValue" disabled />',
         '</div>',
+        '<div class="myToggleSwitchArea">',
+        '<span class="mySimpleGray">your caption</span>',
+        '<input id="myToggleButton" type="checkbox" disabled/>',
+        '<label for="myToggleButton" id="myToggleBar"/>',
+        '</div>',
         '</div>'
       ].join('');
       divmeta.insertAdjacentHTML("beforebegin", mrArea);
+      var toggleSwitch = document.getElementById("myToggleButton");
+      toggleSwitch.addEventListener("change", (event) => {
+        var video = document.getElementsByTagName("video")[0];
+        var value = event.target.checked;
+        if (value) {
+          video.textTracks[video.textTracks.length - 1].mode = "showing";
+        } else {
+          video.textTracks[video.textTracks.length - 1].mode = "disabled";
+        }
+      })
       var elements = document.getElementById("jimakufile");
       elements.addEventListener("change", onSelectFile, false);
     }
