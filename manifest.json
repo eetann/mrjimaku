@@ -12,5 +12,11 @@
     ],
     "permissions": [
     ],
+    "icons": {
+        "16": "images/mrjimaku_icon16.png",
+        "32": "images/mrjimaku_icon32.png",
+        "48": "images/mrjimaku_icon48.png",
+        "128":"images/mrjimaku_icon128.png"
+    },
     "manifest_version": 2
 }
