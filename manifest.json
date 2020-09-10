@@ -1,7 +1,7 @@
 {
     "name": "Mr.Jimaku",
-    "version": "0.4",
-    "description": "show your caption on the YouTube",
+    "version": "1.0",
+    "description": "Show your caption on the YouTube",
     "content_scripts": [
         {
             "matches": ["https://www.youtube.com/*"],
@@ -13,7 +13,6 @@
     "permissions": [
     ],
     "icons": {
-        "16": "images/mrjimaku_icon16.png",
         "32": "images/mrjimaku_icon32.png",
         "48": "images/mrjimaku_icon48.png",
         "128":"images/mrjimaku_icon128.png"

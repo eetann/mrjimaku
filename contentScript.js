@@ -8,7 +8,7 @@ function calcSecond(strArr) {
 function srtParseAddCue(textTrack, text) {
   // TODO: utf-8以外のとき
   var lines = text.split(/\r\n|\r|\n/);
-  var timestamp = "(\\d{2})：(\\d{2})：(\\d{2}),(\\d{3})";
+  var timestamp = "(\\d{2}):(\\d{2}):(\\d{2}),(\\d{3})";
   var re = new RegExp("^" + timestamp + "\\s*-->\\s*" + timestamp);
   for (var i = 0, len = lines.length; i < len; i++) {
     var strArr = lines[i].match(re);
