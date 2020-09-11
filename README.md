@@ -3,7 +3,7 @@
 ![Mr.Jimaku](./images/mrjimaku_icon128.png)
 
 This is a Chrome Extension to show your caption on the YouTube.
-<!-- [Mr.Jimaku][] -->
+[Mr.Jimaku][https://chrome.google.com/webstore/detail/mrjimaku/ffadhemlfiofmghlenfnaemclojffkpd]
 <!-- ![Badge Status](https://ci-as-a-service) -->  
 
 ## Features
