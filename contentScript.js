@@ -44,38 +44,41 @@ function onSelectFile() {
 
 function main() {
   // 表示されるまで要素が取得できないので待つ
-  const jsInitCheckTimer = setInterval(isMetaLoaded, 1000);
-  function isMetaLoaded() {
-    var divmeta = document.getElementById("meta");
-    if (divmeta) {
-      clearInterval(jsInitCheckTimer);
-      var mrArea = [
-        '<div id="MrJimakuArea">',
-        '<div class="mySimpleGray myUploadButton">select a caption file',
-        '<input type="file" id="jimakufile" ',
-        'onchange="uv.value = this.files[0].name;" />',
-        '<input type="text" id="uv" class="myUploadValue" disabled />',
-        '</div>',
-        '<div class="myToggleSwitchArea">',
-        '<span class="mySimpleGray">your caption</span>',
-        '<input id="myToggleButton" type="checkbox" disabled/>',
-        '<label for="myToggleButton" id="myToggleBar"/>',
-        '</div>',
-        '</div>'
-      ].join('');
-      divmeta.insertAdjacentHTML("beforebegin", mrArea);
-      var toggleSwitch = document.getElementById("myToggleButton");
-      toggleSwitch.addEventListener("change", (event) => {
-        var video = document.getElementsByTagName("video")[0];
-        var value = event.target.checked;
-        if (value) {
-          video.textTracks[video.textTracks.length - 1].mode = "showing";
-        } else {
-          video.textTracks[video.textTracks.length - 1].mode = "disabled";
-        }
-      })
-      var elements = document.getElementById("jimakufile");
-      elements.addEventListener("change", onSelectFile, false);
+  var url = location.href;
+  if (url.match("watch")) {
+    const jsInitCheckTimer = setInterval(isMetaLoaded, 1000);
+    function isMetaLoaded() {
+      var divmeta = document.getElementById("meta");
+      if (divmeta) {
+        clearInterval(jsInitCheckTimer);
+        var mrArea = [
+          '<div id="MrJimakuArea">',
+          '<div class="mySimpleGray myUploadButton">select a caption file',
+          '<input type="file" id="jimakufile" ',
+          'onchange="uv.value = this.files[0].name;" />',
+          '<input type="text" id="uv" class="myUploadValue" disabled />',
+          '</div>',
+          '<div class="myToggleSwitchArea">',
+          '<span class="mySimpleGray">your caption</span>',
+          '<input id="myToggleButton" type="checkbox" disabled/>',
+          '<label for="myToggleButton" id="myToggleBar"/>',
+          '</div>',
+          '</div>'
+        ].join('');
+        divmeta.insertAdjacentHTML("beforebegin", mrArea);
+        var toggleSwitch = document.getElementById("myToggleButton");
+        toggleSwitch.addEventListener("change", (event) => {
+          var video = document.getElementsByTagName("video")[0];
+          var value = event.target.checked;
+          if (value) {
+            video.textTracks[video.textTracks.length - 1].mode = "showing";
+          } else {
+            video.textTracks[video.textTracks.length - 1].mode = "disabled";
+          }
+        })
+        var elements = document.getElementById("jimakufile");
+        elements.addEventListener("change", onSelectFile, false);
+      }
     }
   }
 }
