@@ -3,7 +3,7 @@
 ![Mr.Jimaku](./images/mrjimaku_icon128.png)
 
 This is a Chrome Extension to show your caption on the YouTube.
-[Mr.Jimaku][https://chrome.google.com/webstore/detail/mrjimaku/ffadhemlfiofmghlenfnaemclojffkpd]
+[Mr.Jimaku](https://chrome.google.com/webstore/detail/mrjimaku/ffadhemlfiofmghlenfnaemclojffkpd)
 <!-- ![Badge Status](https://ci-as-a-service) -->  
 
 ## Features
@@ -58,8 +58,3 @@ You can turn off the caption by pressing the switch next to the box.
 
 <!-- ## Anything Else -->  
 
-## Author
-[@eetann092](https://twitter.com/eetann092)  
-
-<!-- ## License                           -->  
-<!-- [MIT](http://eetann.mit-license.org) -->  
