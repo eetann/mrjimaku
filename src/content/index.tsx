@@ -12,6 +12,11 @@ function main() {
   const container = document.createElement("div");
   container.id = "mrjimaku-root";
   const shadowRoot = container.attachShadow({ mode: "open" });
+  shadowRoot.innerHTML = `
+  <style>
+  @unocss-placeholder
+  </style>
+  `
 
   const timer = setInterval(injectContent,1000);
   setTimeout(() => clearInterval(timer), 10000);
@@ -26,7 +31,7 @@ function main() {
     const root = createRoot(shadowRoot);
     root.render(
       <React.StrictMode>
-        <p>shado?</p>
+        <p className="bg-red-900">shado?</p>
         {/* <App /> */}
       </React.StrictMode>,
     )
