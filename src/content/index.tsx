@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
+import "../index.css"
 
 function main() {
   const url = location.href;
@@ -10,11 +11,6 @@ function main() {
 
   const container = document.createElement("div");
   container.id = "mrjimaku-root";
-  const shadowRoot = container.attachShadow({ mode: "open" });
-  shadowRoot.innerHTML = `
-  <style>
-  </style>
-  `
 
   const timer = setInterval(injectContent,1000);
   setTimeout(() => clearInterval(timer), 10000);
@@ -26,7 +22,7 @@ function main() {
     }
     clearInterval(timer);
     anchor.before(container);
-    const root = createRoot(shadowRoot);
+    const root = createRoot(container);
     root.render(
       <React.StrictMode>
         <App />
