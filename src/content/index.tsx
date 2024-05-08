@@ -13,7 +13,6 @@ function main() {
   const shadowRoot = container.attachShadow({ mode: "open" });
   shadowRoot.innerHTML = `
   <style>
-  @unocss-placeholder
   </style>
   `
 
