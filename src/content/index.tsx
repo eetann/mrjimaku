@@ -1,7 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-// import App from './App.tsx'
-// import './index.css'
+import App from './App.tsx'
 
 function main() {
   const url = location.href;
@@ -31,8 +30,7 @@ function main() {
     const root = createRoot(shadowRoot);
     root.render(
       <React.StrictMode>
-        <p className="bg-red-900">shado?</p>
-        {/* <App /> */}
+        <App />
       </React.StrictMode>,
     )
   }
