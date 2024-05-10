@@ -1,14 +1,13 @@
 # Mr.Jimaku
 
-![Mr.Jimaku](./images/mrjimaku_icon128.png)
+![Mr.Jimaku](./public/icons/icon-128x128.png)
 
 This is a Chrome Extension to show your caption on the YouTube.
 [Mr.Jimaku](https://chrome.google.com/webstore/detail/mrjimaku/ffadhemlfiofmghlenfnaemclojffkpd)
-<!-- ![Badge Status](https://ci-as-a-service) -->  
 
 ## Features
 ***DEMO:***
-![demo](./images/mrjimaku_demo.gif)
+![demo](./images/demo.gif)
 - If you have a caption file, you can watch the video with the caption
 - Of course, you can also use files that were given by someone else
 - You can turn on or off the display of the caption
@@ -39,10 +38,6 @@ Start time, ` --> `, and end time, in that order.
 Actually, if it's written in this format,
 you don't have to worry about the file extension.  
 
-<!-- For more information, see `awesome-tool help`. -->  
-
-<!-- ## Requirement -->
-<!-- - Requirement -->  
 
 ## Usage
 
@@ -50,11 +45,4 @@ you don't have to worry about the file extension.
 2. Select a caption file in the box under the title
 
 You can turn off the caption by pressing the switch next to the box.
-
-<!-- ## Installation -->
-<!-- ```sh                                              -->  
-<!-- $ git clone https://github.com/eetann/awesome-tool -->  
-<!-- ```                                                -->  
-
-<!-- ## Anything Else -->  
 
